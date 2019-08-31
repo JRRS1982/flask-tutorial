@@ -83,6 +83,7 @@ def login():
 
   return render_template('auth/login.html')
 
+
 # bp.before_app_request() registers a function that runs before the view function, no matter what URL is requested. load_logged_in_user checks if a user id is stored in the session and gets that user’s data from the database, storing it on g.user, which lasts for the length of the request. If there is no user id, or if the id doesn’t exist, g.user will be None. 
 # I believe that this is a core method that comes as part of Flask
 @bp.before_app_request
@@ -95,3 +96,11 @@ def load_logged_in_user():
     g.user = get_db().execute(
       'SELECT * FROM user WHERE id = ?', (user_id)
     ).fetchone()
+
+# quite self explanatory, the logout route clears the session and redirects.
+@bp.route('/logout')
+def logout():
+  session.clear()
+  return redirect(url_for('index'))
+
+  
