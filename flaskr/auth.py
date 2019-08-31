@@ -103,4 +103,15 @@ def logout():
   session.clear()
   return redirect(url_for('index'))
 
-  
+
+# Require authentication in other views..... Creating, editing, and deleting blog posts will require a user to be logged in. A decorator can be used to check this for each view it’s applied to.
+
+# This decorator returns a new view function that wraps the original view it’s applied to. The new function checks if a user is loaded and redirects to the login page otherwise. If a user is loaded the original view is called and continues normally. You’ll use this decorator when writing the blog views.
+# my current understanding is that its a gatekeeper, applied to a view, you cant acccess the real view withtout having a g.user... but you progress to the view if you do, above is probably a better description. 
+def login_required(view):
+  @functools.wraps(view)
+  def wrapped_view(**kwards):
+    if g.user is None:
+      return redirect(url_for('auth.login'))
+    return view(**kwargs)
+  return wrapped_view
