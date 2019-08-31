@@ -26,3 +26,9 @@ Then run it in development mode
 $ export FLASK_ENV=development
 $ flask run
 ```
+
+To create a flaskr.sqlite file if missing from the ./instance file, run the
+following command.
+```
+$ flask init-db
+```

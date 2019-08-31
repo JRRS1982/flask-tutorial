@@ -34,10 +34,21 @@ def create_app(test_config=None):
     os.makedirs(app.instance_path)
   except OSError:
     pass
-  
+
   # a simple page that says hello
   @app.route('/hello')
+
   def hello():
     return 'Hello, World'
+
+  # import the db file into the init 
+  from . import db
+
+  # call the init_app on the db. 
+  db.init_app(app)
+
+  # so import the auth.py file from the root and run register_blueprint on app, with auth.bp as an argument being passed to it.
+  from . import auth
+  app.register_blueprint(auth.bp)
 
   return app
