@@ -15,6 +15,8 @@ from flaskr.db import get_db
 # This creates a blueprint named 'auth', like the application object the blueprint needs to know where its defined, so __name__ is passed as a second argument. The url_prefix will be prepended to all the URLs associated with the blueprint. This blueprint will be imported and regisered in the factory function i.e. __init__.py file before returning the app.
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 # @bp.route associates the URL / register with the register view function. When Flask receives a request to / auth/register, it will call the register view and use the return value as the response.
+
+
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
 # If the user submitted the form, request.method will be 'POST'. In this case, start validating the input.
@@ -50,3 +52,28 @@ def register():
     flash(error)
 # When the user initially navigates to auth/register, or there was a validation error, an HTML page with the registration form should be shown. render_template() will render a template.
   return render_template('auth/register.html')
+
+@bp.route('/login', methods=('GET', 'POST'))
+def login():
+  if request.method == 'POST':
+    username = request.form['username']
+    password = request.form['password']
+    db = get_db()
+    error = None
+    user = db.execute(
+      'SELECT * FROM user WHERE username = ?', (username,)
+    ).fetchone()
+
+    if user is None: 
+      error = 'Incorrect username.'
+    elif not check_password_hash(user['password'], password):
+      error = 'Incorrect password.'
+
+    if error is None: 
+      session.clear()
+      session['user_id'] = user['id']
+      return redirect(url_for('index'))
+
+    flash(error)
+  
+  return render_template('auth/login.html')
