@@ -55,6 +55,14 @@ def register():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
+# There are a few differnces with the register view
+
+# 1) The user is queried first and stored in a variable for later use.
+
+# 2) check_password_hash() hashes the submitted password in the same way as the stored hash and securely compares them. If they match, the password is valid. check_password_hash was imported earlier. 
+
+# 3) session is a dict that stores data across requests. When validation succeeds, the user’s id is stored in a new session. The data is stored in a cookie that is sent to the browser, and the browser then sends it back with subsequent requests. Flask securely signs the data so that it can’t be tampered with.
+
   if request.method == 'POST':
     username = request.form['username']
     password = request.form['password']
@@ -75,5 +83,5 @@ def login():
       return redirect(url_for('index'))
 
     flash(error)
-  
+
   return render_template('auth/login.html')
