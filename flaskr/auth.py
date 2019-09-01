@@ -112,6 +112,7 @@ def login_required(view):
   @functools.wraps(view)
   def wrapped_view(**kwards):
     if g.user is None:
+# so we want to redirect to the login page... that is above... great! However login is on the auth blueprint (this auth.py page is a blueprint) therefore you prepend the 'login' with the name of the blueprint so it becomes 'auth.login'
       return redirect(url_for('auth.login'))
-    return view(**kwargs)
+    return view(**kwards)
   return wrapped_view
