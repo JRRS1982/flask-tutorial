@@ -9,10 +9,12 @@ import functools
 from flask import (
   Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
+
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from flaskr.db import get_db
 # This creates a blueprint named 'auth', like the application object the blueprint needs to know where its defined, so __name__ is passed as a second argument. The url_prefix will be prepended to all the URLs associated with the blueprint. This blueprint will be imported and regisered in the factory function i.e. __init__.py file before returning the app.
+
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 # @bp.route associates the URL / register with the register view function. When Flask receives a request to / auth/register, it will call the register view and use the return value as the response.
 
@@ -32,12 +34,12 @@ def register():
       error = 'Username is required'
     elif not password: 
       error = 'Password is required'
-    
+
 # Validate that username is not already registered by querying the database and checking if a result is returned. db.execute takes a SQL query with ? placeholders for any user input, and a tuple of values to replace the placeholders with. The database library will take care of escaping the values so you are not vulnerable to a SQL injection attack.fetchone() returns one row from the query. If the query returned no results, it returns None. Later, fetchall() is used, which returns a list of all results.
     elif db.execute(
       'SELECT id FROM user WHERE username = ?', (username,)
     ).fetchone() is not None: 
-      error = 'User {} is already registered.'.format(username)
+      error = 'User {0} is already registered.'.format(username)
 
     if error is None: 
 # If validation succeeds, insert the new user data into the database. For security, passwords should never be stored in the database directly. Instead, generate_password_hash() is used to securely hash the password, and that hash is stored. Since this query modifies data, db.commit() needs to be called afterwards to save the changes.
