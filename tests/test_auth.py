@@ -19,7 +19,7 @@ def test_register(client, app):
 #pytest.mark.parametrize tells Pytest to run the same test fucntions with different arguments. You use it here to test difference invalid input and error messages without writing the same code three times. i..e username, passwors and message are being checked here - i think. 
 @pytest.mark.parametrize(('username', 'password', 'message'), (
   ('', '', b'Username is required.'),
-  ('a', '', b'Password is required'.),
+  ('a', '', b'Password is required'),
   ('test', 'test', b'already registered'),
 ))
 
