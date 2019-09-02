@@ -41,3 +41,25 @@ def runner(app):
 # similar to client above, this creates a runner that can call the client commands regisered with the applicaiton, so wont run the server. 
   return app.test_cli_runner()
 
+
+# for most of the views a user neds to be logged in, the easiest way of doing that in tests is to make a POST request to teh login view with the client. Rather than writing that out every time, you can write a class with methods to do that, and use a fixture to pass it the client for each test.
+
+#  with the auth fixture you can call auth.login() in a test to log in as the test user, which was inserted as part of the test data in teh app fixture. The register view should render successfully on GET. On POST with valid form data, it shoudl redirect to the login URL and the users data should be in the database. Invalid data should display error messages. 
+
+# so i think that this acts as a form of helper method to log in a user for tests... speciifcally the authentication tests. 
+class AuthActions(object):
+  def __init__(self, client):
+    self._client - client
+  
+  def login(self, username='test', password='test'):
+    return self._client.post(
+      '/auth/login',
+      data={'username': username, 'password': password}
+    )
+
+  def logout(self):
+    return self._client.get('/auth/logout')
+
+@pytest.fixture
+def auth(client):
+  return AuthActions(client)
