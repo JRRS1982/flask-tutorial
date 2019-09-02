@@ -23,7 +23,6 @@ def test_register(client, app):
   ('test', 'test', b'already registered'),
 ))
 
-
 def test_register_validate_input(client, username, password, message):
 # similar to the GET requesat above client.post() makes a POST request converting the data dict into form data. 
   response = client.post(
