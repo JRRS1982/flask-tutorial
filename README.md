@@ -43,3 +43,26 @@ following command.
 ```
 $ flask init-db
 ```
+
+### Notes
+
+### Install the project in the virtual environment
+
+Use pip to install the project in the virtual environment. 
+
+This command tells pip to find setup.py in the current directory and install it in editable or development mode. You can "$ pip list" to check that the project is now installed. 
+```
+$ pip install -e
+```
+
+#### Setup.py: 
+The setup.py file describes the project and the files that belong to it.
+
+Packages tells Python what package directories (and the Python files they contain) to include. find_packages() finds these directories automatically so you don’t have to type them out. To include other files, such as the static and templates directories, include_package_data is set. Python needs another file named MANIFEST.in to tell what this other data is.
+
+Python also requires another file called MANIFEST.in to tell it what other data is. 
+
+This tells Python to copy everything in the static and templates directories, and the schema.sql file, but to exclude all bytecode files.
+
+Further information about packaging of projects can be found here: 
+* https://packaging.python.org/tutorials/packaging-projects/
