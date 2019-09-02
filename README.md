@@ -4,6 +4,8 @@
 
 * Python 3.7
 * Flask
+* Pytest
+* Coverage
 
 ## Setup
 
@@ -66,3 +68,12 @@ This tells Python to copy everything in the static and templates directories, an
 
 Further information about packaging of projects can be found here: 
 * https://packaging.python.org/tutorials/packaging-projects/
+
+## Testing
+
+Pytest was used for testing the project, although a TDD approach was not followed, as this is a new language for me, in a new framework. 
+
+Each test will create a new temporary database file and populate some data that will be used
+in the tests. The tutorial suggested a SQL file that was used to insert that data. 
+
+The app fixture will call the factory and pass test_config to configure the application and database for testing instead of using your local development configuration.
