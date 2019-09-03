@@ -7,7 +7,6 @@
 * Pytest
 * Coverage
 * Heroku
-* Wheel - library for python distribution (.whl extention)
 * see requirements.txt file for the detailed list
 
 ## Setup
@@ -38,7 +37,7 @@ $ export FLASK_ENV=development
 4. Run the program via the terminal by entering;
 
 ```
-flask run
+$ flask run
 ```
 
 Which should launch a simple local server at http://127.0.0.1:5000/
@@ -56,7 +55,8 @@ $ flask init-db
 
 Use pip to install the project in the virtual environment.
 
-This command tells pip to find setup.py in the current directory and install it in editable or development mode. You can "$ pip list" to check that the project is now installed. 
+This command tells pip to find setup.py in the current directory and install it in editable or development mode. You can "$ pip list" to check that the project is now installed.
+
 ```
 $ pip install -e
 ```
@@ -116,3 +116,7 @@ To generate that list of requirements for the requirements.txt file, you can rel
 ```
 $ pip freeze > requirements.txt
 ```
+
+Deployed here: 
+
+https://nameless-shelf-49036.herokuapp.com/
