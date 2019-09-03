@@ -1,40 +1,59 @@
-# flask-tutorial
+# FLASKR - a Python project with Flask framework
 
-## Technologies used
+So this is a RESTful Python/Flask app with CRUD for users that are logged in through the session, otherwise you will have to register as a user first and provide the correct password. Error handling is covered.
 
-* Python 3.7
+I felt like exploring Python and Flask framework as have heard good things, so have followed the official tutorial to create a flask project, the guide can be found [here.](https://flask.palletsprojects.com/en/1.1.x/tutorial)
+
+Partly deployed with Heroku [here](https://nameless-shelf-49036.herokuapp.com/) although please clone and take look at it locally as sadly I understand that Heroku doesn't support SQLite. Somewhat disappointing as SQLite and Heroku are the recommended resources in the tutorial, but after quite a bit of research i found many other users with a similar issue and I wish to move onto another project. The program works when spun up locally so I am satisfied for now.
+
+### [User Stories](#user_story) | [Tech](#tech) | [Installation](#installation) | [Reflection](#reflection) | [Contact](#contact)
+
+#### Problem: Input / Outputs
+
+Inputs: this is a web app, that takes data from the user/browser in the form of string entered into boxes on a web page or buttons causing events.
+
+Outputs: the entered data is saved to the databases, which populates web page views that has a CRUD system for users that are logged in through the session. 
+
+### <a name="user_story">User Stories</a>
+
+n/a - followed a tutorial.
+
+### <a name="Tech">Tech Stack</a>
+
+* Python 3.7.4
 * Flask
 * Pytest
 * Coverage
-* Heroku
-* see requirements.txt file for the detailed list
+* Heroku (a bit)
+* see requirements.txt file at root for the detailed list
 
-## Setup
+### <a name="installation">Installation: how it works</a>
 
-The flask script is nice to start a local development server, but you would have to restart it manually after each change to your code. That is not very nice and Flask can do better. If you enable debug support the server will reload itself on code changes, and it will also provide you with a helpful debugger if things go wrong.
+Setup virtualenv
 
-To enable all development features (including debug mode) you can export the FLASK_ENV environment variable and set it to development before running the server:
+```
+$ python3 -m venv venv
+```
 
-1. Activate the virtual environment
+Then activate the virtual environment ("$deactivate" from terminal will close the venv if needed)
 
 ```
 $ . venv/bin/activate
 ```
-("$deactivate" from terminal will close the venv if needed)
 
-2. Tell Flask where to find your application
+Tell Flask where to find your application
 
 ```
 $ export FLASK_APP=flaskr
 ```
 
-3. Then set environment as development
+Then set environment as development so it is editable
 
 ```
 $ export FLASK_ENV=development
 ```
 
-4. Run the program via the terminal by entering;
+Run the program via the terminal by entering
 
 ```
 $ flask run
@@ -49,38 +68,28 @@ following command to initialize the database.
 $ flask init-db
 ```
 
-### Notes
-
 ### Install the project in the virtual environment
 
-Use pip to install the project in the virtual environment.
-
-This command tells pip to find setup.py in the current directory and install it in editable or development mode. You can "$ pip list" to check that the project is now installed.
+Use pip to install the project in the virtual environment. This command tells pip to find setup.py in the current directory and install it in editable or development mode. You can "$ pip list" to check that the project is now installed. The setup.py file describes the project and the files that belong to it.
 
 ```
 $ pip install -e
 ```
 
-#### Setup.py: 
-The setup.py file describes the project and the files that belong to it.
+### Notes
 
-Packages tells Python what package directories (and the Python files they contain) to include. find_packages() finds these directories automatically so you don’t have to type them out. To include other files, such as the static and templates directories, include_package_data is set. Python needs another file named MANIFEST.in to tell what this other data is.
+Packages tells Python what package directories (and the Python files they contain) to include. find_packages() finds these directories automatically so you don’t have to type them out. To include other files, such as the static and templates directories, include_package_data is set. Python needs another file named MANIFEST.in to tell it what this other data is.
 
-Python also requires another file called MANIFEST.in to tell it what other data is. 
-
-This tells Python to copy everything in the static and templates directories, and the schema.sql file, but to exclude all bytecode files.
-
-Further information about packaging of projects can be found here: 
-* https://packaging.python.org/tutorials/packaging-projects/
+Further information about packaging of projects can be found [here](https://packaging.python.org/tutorials/packaging-projects/) 
 
 ## Testing
 
 Pytest was used for testing the project, although a TDD approach was not followed, as this is a new language for me, in a new framework and i was following a tutorial which wasn't following the process.
 
 Each test will create a new temporary database file and populate some data that will be used
-in the tests. The tutorial suggested a SQL file that was used to insert that data.
+in the tests. The tutorial provided a SQL file that was used to insert that data.
 
-The app fixture will call the factory and pass test_config to configure the application and database for testing instead of using your local development configuration.
+The app fixture will call the factory and pass test_config to configure the application and database for testing instead of using the local development configuration.
 
 To install the project (don't forget the dot!) which allows you to run tests:
 ```
@@ -95,9 +104,9 @@ To measure the code coverage of the tests, use the coverage command:
 ```
 $ coverage run -m pytest
 ```
-Then open htmlcov/index.html in the browser which will produce a coverage report, while in the browser you can navigate around by clicking on files and find those lines that currently lack coverage.
+Then open ./htmlcov/index.html in the browser which will produce a coverage report, while in the browser you can navigate around by clicking on files and find those lines that currently lack coverage.
 
-An more details HTML report allows you to see which lines were covered in each file... if you really want that:
+A very detailed HTML report allows you to see which lines were covered in each file... if you really want that:
 ```
 $ coverage html
 ```
@@ -117,6 +126,22 @@ To generate that list of requirements for the requirements.txt file, you can rel
 $ pip freeze > requirements.txt
 ```
 
-Deployed here: 
+### Screenshots / UML / Notes / Diagrams</a>
 
-https://nameless-shelf-49036.herokuapp.com/
+Should there be any images/notes, please find them in the images folder of the 
+project.
+
+### <a name="reflection">Reflection and further development</a>
+
+This project got me up and running and enjoying my code again, so thank you Flask, I owe you one. It is really satisfying to have build a working app (with support) rather than just be working through algorithm in a single language.
+
+Could do a lot of further development, such as swapping out the database to PostgreSQL or deploying to AWS instead of Heroku - but this project was just to get a smell of Python, which I really rather like... may return one day. List of further development suggestions from the guys/girls at flask is [here](https://flask.palletsprojects.com/en/1.1.x/tutorial/next/).
+
+If / when i return to this project my first point of interest would be getting it deployed.
+
+### Credits / team members
+
+No contributions are required at this time, as this is a training exercise.
+
+* This was a solo project
+* [A tutorial was used](https://flask.palletsprojects.com/en/1.1.x/tutorial)
