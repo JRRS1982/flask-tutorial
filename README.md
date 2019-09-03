@@ -4,7 +4,7 @@ So this is a RESTful Python/Flask app with CRUD for users that are logged in thr
 
 I felt like exploring Python and Flask framework as have heard good things, so have followed the official tutorial to create a flask project, the guide can be found [here.](https://flask.palletsprojects.com/en/1.1.x/tutorial)
 
-Partly deployed with Heroku [here](https://nameless-shelf-49036.herokuapp.com/) although please clone and take look at it locally as sadly I understand that Heroku doesn't support SQLite. Somewhat disappointing as SQLite and Heroku are the recommended resources in the tutorial, but after quite a bit of research i found many other users with a similar issue and I wish to move onto another project. The program works when spun up locally so I am satisfied for now.
+Partly deployed with Heroku [here](https://nameless-shelf-49036.herokuapp.com/) although please clone and take look at it locally or in the [images](./images) file as sadly I understand that Heroku doesn't support SQLite. Somewhat disappointing as SQLite and Heroku are the recommended resources in the tutorial, but after quite a bit of research i found many other users with a similar issue and I wish to move onto another project. The program works when spun up locally so I am satisfied for now.
 
 ### [User Stories](#user_story) | [Tech](#tech) | [Installation](#installation) | [Reflection](#reflection) | [Contact](#contact)
 
@@ -128,8 +128,7 @@ $ pip freeze > requirements.txt
 
 ### Screenshots / UML / Notes / Diagrams</a>
 
-Should there be any images/notes, please find them in the images folder of the 
-project.
+I have saved a number of screen prints to [images](./images) just to show some of the CRUD routes for quick reference.
 
 ### <a name="reflection">Reflection and further development</a>
 
