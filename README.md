@@ -6,6 +6,8 @@
 * Flask
 * Pytest
 * Coverage
+* Heroku
+* Wheel - library for python distribution (.whl extention)
 
 ## Setup
 
@@ -40,7 +42,7 @@ flask run
 Which should launch a simple local server at http://127.0.0.1:5000/
 
 To create a flaskr.sqlite file if missing from the ./instance file, run the
-following command.
+following command to initialize the database.
 
 ```
 $ flask init-db
@@ -50,7 +52,7 @@ $ flask init-db
 
 ### Install the project in the virtual environment
 
-Use pip to install the project in the virtual environment. 
+Use pip to install the project in the virtual environment.
 
 This command tells pip to find setup.py in the current directory and install it in editable or development mode. You can "$ pip list" to check that the project is now installed. 
 ```
