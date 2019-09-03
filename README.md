@@ -8,6 +8,7 @@
 * Coverage
 * Heroku
 * Wheel - library for python distribution (.whl extention)
+* see requirements.txt file for the detailed list
 
 ## Setup
 
@@ -20,6 +21,7 @@ To enable all development features (including debug mode) you can export the FLA
 ```
 $ . venv/bin/activate
 ```
+("$deactivate" from terminal will close the venv if needed)
 
 2. Tell Flask where to find your application
 
@@ -98,4 +100,19 @@ Then open htmlcov/index.html in the browser which will produce a coverage report
 An more details HTML report allows you to see which lines were covered in each file... if you really want that:
 ```
 $ coverage html
+```
+
+### Heroku
+
+* runtime.txt file created to specify the language
+* requirements.txt file created to specify the dependencies.
+
+Using pip to install those dependencies you would run the following command:
+```
+$ pip install -r requirements.txt
+```
+
+To generate that list of requirements for the requirements.txt file, you can rely on pip to gather and create the file:
+```
+$ pip freeze > requirements.txt
 ```
